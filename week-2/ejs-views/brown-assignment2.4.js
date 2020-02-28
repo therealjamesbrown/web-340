@@ -1,9 +1,9 @@
 /*
 ============================================
-; Title:  Assignment 2.2.js
+; Title:  Assignment 2.4.js
 ; Author: James Brown
 ; Date:   2/27/2020
-; Description: Assignment 2.2.js. starting a node server and echoing hello world at port 8080.
+; Description: Assignment 2.4.js. starting a node server and exporint variables from app to client side using ejs.
 ;===========================================
 */
 
