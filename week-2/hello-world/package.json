@@ -2,5 +2,7 @@
     "name": "hello-world",
     "author": "James Brown",
     "private": true,
-    "dependencies": {}
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
