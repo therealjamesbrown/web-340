@@ -14,7 +14,7 @@ const header = require('../../brown-header.js');
 console.log(header.display('James', 'Brown', 'Exercise 5.3'));
 
 // Welcome message
-console.log('\n--Welcome to Exercise 5.2--');
+console.log('\n--Welcome to Exercise 5.3--');
 
 var express = require('express');
 var http = require('http');
