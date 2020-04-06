@@ -5,11 +5,12 @@
                 <h1 class="display-4"><%= title %></h1>
                 <p class="lead">Current Records</p>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Employee 1</li>
-                    <li class="list-group-item">Employee 2</li>
-                    <li class="list-group-item">Employee 3</li>
-                    <li class="list-group-item">Employee 4</li>
-                    <li class="list-group-item">Employee 5</li>
+                  <% employees.forEach( (employee) => { %>
+                    <li class="list-group-item">
+                      <td><%= employee.firstName %></td>
+                      <td><%= employee.lastName %></td>
+                  </li>
+                    <% }); %>
                   </ul>
               </div>
             </div>
