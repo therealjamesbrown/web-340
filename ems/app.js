@@ -10,6 +10,7 @@
 //requires
 var express = require('express');
 var http = require('http');
+var helmet = require('helmet');
 var path = require('path');
 var mongoose = require("mongoose");
 var logger = require('morgan');
@@ -59,6 +60,8 @@ app.use(logger('dev'));
 
 app.use('/css', express.static('css'));
 
+app.use(helmet.xssFilter());
+
 app.get('/', function (req, res){
     res.render('index', {
         title: "Employee Records Application",
@@ -68,4 +71,4 @@ app.get('/', function (req, res){
 
 http.createServer(app).listen(8080, function(){
     console.log(`app started on port 8080`);
-})
+});
