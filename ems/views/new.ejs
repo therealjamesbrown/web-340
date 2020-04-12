@@ -1,0 +1,30 @@
+<%- include("header") %>
+<%- include("navbar") %>
+<div role="main" class="container">
+
+<h2>-- Add Employee --</h2>
+      <form method="post" action="/process">
+        <div class="form-group">
+          <label for="txtFirstName">First Name:</label>
+          <input type="text" class="form-control" id="txtFirstName" name="txtFirstName" />
+
+          <label for="txtLastName">Last Name:</label>
+          <input type="text" class="form-control" id="txtLastName" name="txtLastName" />
+        </div>
+
+        <div class="form-group">
+          <!-- CSRF token -->
+          <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+          <button type="submit" class="btn btn-secondary float-right">
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <br /><br />
+
+      <a href="/index">Return to Home</a>
+
+</div>
+<%- include("footer") %>
+<%- include("scripts") %>
