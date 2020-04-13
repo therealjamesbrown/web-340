@@ -55,6 +55,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use( express.static( "public" ) );
+
 app.use(cookieParser());
 
 app.use(csrfProtection);
@@ -104,11 +106,17 @@ app.post('/process', function(req, res){
     //get the first and last name and add them to the existing object
     const newFirstName = req.body.txtFirstName;
     const newLastName = req.body.txtLastName;
+    const newTitle = req.body.txtTitle;
+    const newSalary = req.body.txtSalary;
+    const years = req.body.txtYears;
 
     //create new employee model
     var newEmployee = new Employee({
         firstName: newFirstName,
-        lastName: newLastName
+        lastName: newLastName,
+        title: newTitle,
+        salary: newSalary,
+        years: years
     });
     // save
   newEmployee.save(function(err) {

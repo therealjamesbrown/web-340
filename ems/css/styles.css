@@ -15,6 +15,12 @@
  #hide{
      
  }
+
+ .cardCustom {
+     padding-bottom: 5%;
+     margin-bottom: 10%;
+ }
+
  .start{
     display: block;
     margin-left: auto;
@@ -22,13 +28,29 @@
     margin-top: 15%;
  }
  body{
-     background-color: rgb(193, 193, 193);
+     background-color: rgb(237, 237, 237);
+ }
+
+ .addEmployee{
+     text-decoration: none;
  }
 
  footer{
-     text-align: center;
+    margin-bottom: 2%;
+    bottom: 0;
+    width: 100%;
+    color: white;
  }
 
  .mainJumbo{
      background-color: white;
  }
+
+ .jumbotron-img{
+    background-image: url("team.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no;
+    opacity: 1;
+    transition: 1.0s opacity;
+  }

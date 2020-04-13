@@ -14,7 +14,10 @@ var Schema = mongoose.Schema;
 //define the employees schema
 var emsSchema = new Schema({
     firstName: String,
-    lastName: String
+    lastName: String,
+    title: String,
+    salary: String,
+    years: String
 })
 
 //define the employee model

@@ -1,27 +1,28 @@
-<div class="container" id="formContainer">
-    <row class="align-items-center justify-content-center hide">
-        <div class="col">
-            <div class="jumbotron mainJumbo">
-                <h1 class="display-4"><%= title %></h1>
-                <p class="lead">Current Records</p>
-                <ul class="list-group list-group-flush">
-                  <% employees.forEach( (employee) => { %>
-                    <li class="list-group-item">
-                      <td><%= employee.firstName %></td>
-                      <td><%= employee.lastName %></td>
-                      <td><form class="float-right" method="get" action="/view/<%= employee.firstName %>">
-                        <button type="submit" class="btn btn-primary mb-2">View Employee</button>
-                      </form>
-                      </td>
-                  </li>
-                    <% }); %>
-                  </ul>
-                  <br />
-                  <a href="/new" class="btn btn-primary">Add Employee</a>
-                  <br />
-                  <br />
-                  
-              </div>
-            </div>
-    </row>
-  </div>
+<div class="row">
+  <% employees.forEach( (employee) => { %>
+  <div class="col-sm-4 ">
+    <div class="card-columns-fluid">
+      <div class="card cardCustom border-success mb-3 bg-dark text-white" style="width: 18rem;">
+        <img class="card-img-top" src="test.jpg" alt="Card image cap">
+        <div class="card-body ">
+          <h5 class="card-title"><%= employee.firstName %> <%= employee.lastName %></h5>
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item bg-dark">Title: <%= employee.title %></li>
+            <li class="list-group-item bg-dark">Years With Company: <%= employee.years %></li>
+            <li class="list-group-item bg-dark">Salary: $<%= employee.salary %></li>
+          </ul>
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark">
+            <td><form method="get" action="/view/<%= employee.firstName %>">
+              <button type="submit" class="btn btn-success">View Full Employee Profile</button>
+            </form>
+            </td>
+        </li>
+      </ul>
+        </div>
+      </div>
+    </div>
+</div>
+<br/>
+<% }); %>
+</div>
