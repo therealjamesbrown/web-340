@@ -38,23 +38,6 @@ db.once("open", function(){
     console.log("App connected to mLab MongoDB instance");
 });
 
-//creating some test employees for the time being
-var enterpriseEmployees = [
-    new Employee({
-        firstName: "James",
-        lastName: "Brown"
-    }),
-    new Employee({
-        firstName: "Shyan",
-        lastName: "Allen"
-    }),
-    new Employee({
-        firstName: "Fred",
-        lastName: "Empkey"
-    })
-]
-
-
 //application setup
 var app = express();
 
@@ -86,13 +69,23 @@ app.use(function(req, res, next){
 
 
 //handling of pages and forms
-
 app.get('/', function (req, res){
-    res.render('index', {
-        title: "Employee Records Application",
-        employees: enterpriseEmployees
+    Employee.find({}, function (err, employees){
+        if (err){
+            console.log(err);
+            throw err;
+        } else {
+            console.log(employees);
+            res.render('index', {
+                title: "Employee Records Application",
+                employees: employees
+            });
+        }
+
     });
+    
 });
+
 
 //section for new page to add user, get details, etc.
 
@@ -131,7 +124,6 @@ app.post('/process', function(req, res){
 
 
 //create and start server
-
 http.createServer(app).listen(8080, function(){
     console.log(`app started on port 8080`);
 });
