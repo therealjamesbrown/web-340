@@ -9,11 +9,18 @@
                     <li class="list-group-item">
                       <td><%= employee.firstName %></td>
                       <td><%= employee.lastName %></td>
+                      <td><form class="float-right" method="get" action="/view/<%= employee.firstName %>">
+                        <button type="submit" class="btn btn-primary mb-2">View Employee</button>
+                      </form>
+                      </td>
                   </li>
                     <% }); %>
                   </ul>
                   <br />
                   <a href="/new" class="btn btn-primary">Add Employee</a>
+                  <br />
+                  <br />
+                  
               </div>
             </div>
     </row>

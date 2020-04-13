@@ -1,0 +1,38 @@
+<%- include("header") %>
+<%- include("navbar") %>
+<div role="main" class="container">
+<!--Container for form-->
+<h2>Employee Details</h2>
+      <br />
+      <div>
+        <div class="form-group">
+          <label for="txtFirstName">First Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="txtFirstName"
+            readonly
+            value="<%= employee[0].firstName %>"
+            name="txtName"
+          />
+        </div>
+
+        <label for="txtFirstName">Last Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="txtLastName"
+            readonly
+            value="<%= employee[0].lastName %>"
+            name="txtName"
+          />
+        </div>
+      </div>
+
+      <br /><br />
+
+      <a href="/">&larr; OK</a>
+    </div>
+</div>
+<%- include("footer") %>
+<%- include("scripts") %>

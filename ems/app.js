@@ -24,7 +24,7 @@ var Employee = require("./models/employee");
 var csrfProtection = csrf({cookie: true});
 
 //DB connection
-var mongoDB = 'mongodb+srv://admin:snow123@buwebdev-cluster-1-bbiz3.mongodb.net/test';
+var mongoDB = 'mongodb+srv://admin:snow1234@buwebdev-cluster-1-bbiz3.mongodb.net/test';
 mongoose.connect(mongoDB, {
     userMongoClient: true
 });
@@ -121,6 +121,25 @@ app.post('/process', function(req, res){
     }
   });
 });
+
+
+//view page
+app.get('/view/:queryName', function(req, res){
+    var queryName = req.params.queryName;
+    Employee.find({'firstName': queryName}, function(error, employees){
+        if (error) throw error;
+        console.log(employees);
+        if(employees.length > 0){
+            res.render("view", {
+                title: "Employee Record",
+                employee: employees
+            });
+        } else {
+            console.log('employee not found');
+            res.redirect("/");
+        }
+    })
+})
 
 
 //create and start server
