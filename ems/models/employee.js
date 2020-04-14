@@ -17,8 +17,9 @@ var emsSchema = new Schema({
     lastName: String,
     title: String,
     salary: String,
-    years: String
-})
+    years: String,
+    productImage: { type: String }   
+});
 
 //define the employee model
 var Employee = mongoose.model("Employee", emsSchema);

@@ -17,7 +17,6 @@
  }
 
  .cardCustom {
-     padding-bottom: 5%;
      margin-bottom: 10%;
  }
 
@@ -47,10 +46,15 @@
  }
 
  .jumbotron-img{
-    background-image: url("team.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no;
     opacity: 1;
     transition: 1.0s opacity;
+  }
+
+  .cardStyle {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
   }

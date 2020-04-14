@@ -3,7 +3,7 @@
   <div class="col-sm-4 ">
     <div class="card-columns-fluid">
       <div class="card cardCustom border-success mb-3 bg-dark text-white" style="width: 18rem;">
-        <img class="card-img-top" src="test.jpg" alt="Card image cap">
+        <img class="card-img-top cardStyle" src="<%= employee.productImage %>" alt="Card image cap">
         <div class="card-body ">
           <h5 class="card-title"><%= employee.firstName %> <%= employee.lastName %></h5>
           <ul class="list-group list-group-flush ">
@@ -14,9 +14,22 @@
           <ul class="list-group list-group-flush">
           <li class="list-group-item bg-dark">
             <td><form method="get" action="/view/<%= employee.firstName %>">
-              <button type="submit" class="btn btn-success">View Full Employee Profile</button>
+              <button type="submit" class="btn btn-success" style="font-style: italic;">View Full Employee Profile</button>
             </form>
-            </td>
+            </td><center><br>
+          <div class="form-group">
+            <!-- CSRF token -->
+            <form method="post" action="/delete/<%= employee.firstName %>">
+            <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+            <button type="submit" style="text-decoration: none; border-style: none;" class="bg-dark">
+              <svg class="bi bi-trash" style="text-decoration: none; color: white;" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </form>
+          </div>
+        </center>
         </li>
       </ul>
         </div>
@@ -26,3 +39,9 @@
 <br/>
 <% }); %>
 </div>
+
+
+<!--<svg class="bi bi-trash" style="text-decoration: none; color: white;" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+            </svg>-->
