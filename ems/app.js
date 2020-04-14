@@ -96,9 +96,7 @@ app.get('/', function (req, res){
                 employees: employees
             });
         }
-
     });
-    
 });
 
 
@@ -118,7 +116,7 @@ app.get('/new', function(req, res) {
 });
 });
 
-app.post('/process', upload.single('productImage'), function(req, res){
+app.post('/process', upload.single('img'), function(req, res){
     
     console.log(req.file);
     //console.log(`${req.body.txtFirstName} + ${req.body.txtLastName}`);
@@ -133,7 +131,7 @@ app.post('/process', upload.single('productImage'), function(req, res){
     const newTitle = req.body.txtTitle;
     const newSalary = req.body.txtSalary;
     const years = req.body.txtYears;
-    const newProductImage = req.file.path;
+    const newImg = req.file.path;
 
 
     //create new employee model
@@ -143,7 +141,7 @@ app.post('/process', upload.single('productImage'), function(req, res){
         title: newTitle,
         salary: newSalary,
         years: years,
-        productImage: newProductImage
+        img: newImg
     });
 
     // save

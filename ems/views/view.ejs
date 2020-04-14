@@ -19,13 +19,35 @@
 
         <label for="txtFirstName">Last Name:</label>
           <input
-            type="text"
+            type="hidden"
             class="form-control"
-            id="txtLastName"
+            id="data"
             readonly
-            value="<%= employee[0].lastName %>"
+            value="<%= employee %>"
             name="txtName"
           />
+          <h2>
+              <ul>
+               
+            </ul>
+
+<script>
+var object = document.getElementById('data').value;
+console.log(object);
+
+//var obj = JSON.parse(object);
+
+//for (const property in parsedOb) {
+  //console.log(`${property}: ${parsedOb[property]}`);
+//}
+
+
+var txt = '{firstName: ‘Emiliano’, lastName: ‘Sanchez’ title: ‘Welder’,salary: ‘234554’,years: ‘4’,productImage: ‘public/2.jpeg’,__v: 0 }'
+var obj = JSON.parse(txt);
+console.log(obj);
+</script>
+
+          </h2>
         </div>
       </div>
 

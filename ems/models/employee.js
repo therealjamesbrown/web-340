@@ -18,7 +18,7 @@ var emsSchema = new Schema({
     title: String,
     salary: String,
     years: String,
-    productImage: { type: String }   
+    img: { type: String }   
 });
 
 //define the employee model

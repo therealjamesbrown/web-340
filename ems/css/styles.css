@@ -17,7 +17,7 @@
  }
 
  .cardCustom {
-     margin-bottom: 10%;
+    
  }
 
  .start{
@@ -57,4 +57,5 @@
     width: 100%;
     height: 20vw;
     object-fit: cover;
+    box-shadow: inset 0 0 15rem rgba(0, 0, 0, .5) !important;
   }
