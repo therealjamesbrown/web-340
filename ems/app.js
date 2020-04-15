@@ -4,10 +4,15 @@
 ; Author: James Brown
 ; Date:   4/12/2020
 ; Description: ems application
+; Dislcaimer: All current employee images are royalty free images obtained via unsplash.com. 
 ;===========================================
 */
 
-//requires
+/**
+ * 
+ * REQUIRES AND IMPORTS
+ * 
+ */
 var express = require('express');
 var http = require('http');
 var helmet = require('helmet');
@@ -17,8 +22,17 @@ var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
 var mongoose = require("mongoose");
 var logger = require('morgan');
+//using multer for uploading images to mongo
 var multer = require('multer');
+var Employee = require("./models/employee");
 
+
+
+/**
+ * 
+ * LOGIC FOR STORING IMAGES
+ * 
+ */
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null, './public');
@@ -28,13 +42,17 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage: storage});
-var Employee = require("./models/employee");
+
 
 
 //setup csrf protection
 var csrfProtection = csrf({cookie: true});
 
-//DB connection
+/**
+ * 
+ * MONGO DB CONNECTION
+ * 
+ */
 var mongoDB = 'mongodb+srv://admin:snow1234@buwebdev-cluster-1-bbiz3.mongodb.net/test';
 mongoose.connect(mongoDB, {
     userMongoClient: true
@@ -49,7 +67,11 @@ db.once("open", function(){
     console.log("App connected to mLab MongoDB instance");
 });
 
-//application setup
+/**
+ * 
+ * APP CONFIGURATION
+ * 
+ */
 var app = express();
 
 app.set('views', path.resolve(__dirname, 'views'));
@@ -78,12 +100,20 @@ app.use(function(req, res, next){
     res.locals.csrfToken = token;
     next();
 })
-
 app.use('/public', express.static('public'));
 
 
 
-//handling of pages and forms
+/**
+ * 
+ * BEGIN APP
+ * 
+ */
+
+/**
+ * LOAD THE INDEX OR HOME PAGE
+ * 
+ */
 app.get('/', function (req, res){
     Employee.find({}, function (err, employees){
         if (err){
@@ -100,8 +130,11 @@ app.get('/', function (req, res){
 });
 
 
-//section for new page to add user, get details, etc.
 
+/**
+ *ADD NEW EMPLOYEE SECTION
+ *section for new page to add user, get details, etc.
+ */
 app.get('/new', function(req, res) {
     Employee.find({}, function (err, employees){
         if (err){
@@ -115,7 +148,7 @@ app.get('/new', function(req, res) {
 }
 });
 });
-
+//FILTER FOR POST REQUEST TO UPLOAD NEW DETAILS TO DB
 app.post('/process', upload.single('img'), function(req, res){
     
     console.log(req.file);
@@ -157,7 +190,10 @@ app.post('/process', upload.single('img'), function(req, res){
 });
 
 
-//delete employee from DB
+/**
+ * DELETE OPERATION
+ * filters for post request to delete employee from the DB.
+ */
 app.post('/delete/:queryName', function(req, res){
     var queryName = req.params.queryName;
     console.log(queryName);
@@ -165,10 +201,14 @@ app.post('/delete/:queryName', function(req, res){
         if(err) console.log(err);
         console.log("Succcessful Deletion")
         res.redirect('/');
-    })
-})
+    });
+});
 
-//view page
+/**
+ * VIEW PAGE
+ * This section takes a GET request, searches the mongo db for the name, retrieves the results and puts them back in the
+ * UI.
+ */
 app.get('/view/:queryName', function(req, res){
     var queryName = req.params.queryName;
     Employee.find({'firstName': queryName}, function(error, employees){
@@ -191,3 +231,9 @@ app.get('/view/:queryName', function(req, res){
 http.createServer(app).listen(8080, function(){
     console.log(`app started on port 8080`);
 });
+
+/**
+ * 
+ * END PROGRAM
+ * 
+ */

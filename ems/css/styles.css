@@ -59,3 +59,8 @@
     object-fit: cover;
     box-shadow: inset 0 0 15rem rgba(0, 0, 0, .5) !important;
   }
+
+  img{
+    object-fit: cover;
+    box-shadow: inset 0 0 100rem rgba(0, 0, 0, .5);
+  }
