@@ -55,7 +55,8 @@ var csrfProtection = csrf({cookie: true});
  */
 var mongoDB = 'mongodb+srv://admin:snow1234@buwebdev-cluster-1-bbiz3.mongodb.net/test';
 mongoose.connect(mongoDB, {
-    userMongoClient: true
+    useUnifiedTopology: true,
+    useNewUrlParser: true
 });
 
 mongoose.Promise = global.Promise;
@@ -228,9 +229,9 @@ app.get('/view/:queryName', function(req, res){
 
 
 //create and start server
-http.createServer(app).listen(8080, function(){
-    console.log(`app started on port 8080`);
-});
+http.createServer(app).listen(app.get('port'), function() {
+    console.log('Application started on port ' + app.get('port'));
+  });
 
 /**
  * 
